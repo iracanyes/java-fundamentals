@@ -1,0 +1,9 @@
+.idea/**
+*.bak
+.classpath
+.project
+bj9f.iml
+build.xml
+manifest.mf
+nbproject/**
+mod/**

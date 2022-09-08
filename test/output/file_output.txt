@@ -1,0 +1,2 @@
+The FileOutputStream class of the java.io package can be used to write data (in bytes)Second sentence appended to file by second FileOutputStream(byte[], boolean).
+Third sentence appended to file by second FileOutputStream(File, boolean).

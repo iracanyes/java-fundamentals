@@ -1,0 +1,39 @@
+/*
+* Description: 
+* Reference JDK and non-JDK classes
+* A class that is part of the core JDK does not need to be added to the classpath to be executed. 
+* So this example, referencing the Scanner and MatchResult classes, can be executed simply with the java launcher
+*
+* To Launch this standalone program, will be:
+* ```java ScannerExample.java`` 
+*/
+import java.util.scanner;
+import java.util.regex.MatchResult;
+
+public class ScannerExample{
+	public static void main(String... args){
+		String wordsAndNumbers = """
+			A class that is part of the core JDK does not need to be added to the classpath to be executed. So this example, referencing the Scanner and MatchResult classes, can be executed simply with the java launcher
+			""";
+
+		try(Scanner scanner = new Scanner(wordsAndNumbers)){
+			scanner.findAll("class").map(MatchResult::group).forEach(System.out::println);
+		}
+
+	}
+}
+
+/*
+* Here is another example of Type declaration using à non-JDK classes.
+* For launching this standalone app, we will need to add the route to this classes to the classpath
+* on runtime.
+* In this case we use this command:
+*	``java -cp /path/to/commons-lang3-3.12.0.jar ReferenceNonJDKClass.java``
+*/
+import org.apache.commons.lang3.RandomUtils;
+
+public class ReferenceNonJDKClass{
+	public static void main(String[] args){
+		System.out.println(RandomUtils.nextInt());
+	}
+}

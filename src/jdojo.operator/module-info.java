@@ -1,0 +1,3 @@
+module jdojo.operator{
+	
+}
