@@ -18,12 +18,14 @@
 /*
 * Command:
 *	Compile:
-*		javac -p mod -d mod/jdojo.datetime src/jdojo.datetime/module-info.java src/jdojo.datetime/com/jdojo/datetime/scale/human/* src/jdojo.datetime/com/jdojo/datetime/scale/machine/* src/jdojo.datetime/com/jdojo/datetime/*.java  -Xdiags:verbose -Xlint:unchecked 
+*		javac -p mod -d mod/jdojo.datetime src/jdojo.datetime/module-info.java src/jdojo.datetime/com/jdojo/datetime/scale/human/* src/jdojo.datetime/com/jdojo/datetime/scale/machine/* src/jdojo.datetime/com/jdojo/datetime/*.java src/jdojo.datetime/com/jdojo/datetime/formatter/* src/jdojo.datetime/com/jdojo/datetime/legacy/*  -Xdiags:verbose -Xlint:unchecked   
 *	Packaging:
 *		jar -cvf lib/com.jdojo.datetime.jar -C mod/jdojo.datetime .
 *	Run:
 *		java -p lib -m jdojo.datetime/com.jdojo.datetime.<class-name>
 */
 module jdojo.datetime{
+	// Required for using java.sql.Time class
+	requires java.sql;
 	exports com.jdojo.datetime;
 }

@@ -31,13 +31,16 @@
 package com.jdojo.datetime;
 
 
-
-
+import com.jdojo.datetime.formatter.PreDefinedFormatters;
+import com.jdojo.datetime.formatter.UserDefinedPatterns;
+import com.jdojo.datetime.formatter.FormatMethodOfDateTimeClasses;
 
 import static java.time.format.DateTimeFormatter.ISO_DATE;
 
-public class FormatterDateAndTime{
+public class FormatterDatesAndTimes{
 	public static void main(String[] args) {
-		preDefinedFormatters()
+		PreDefinedFormatters.main(new String[0]);
+		FormatMethodOfDateTimeClasses.main(new String[0]);
+		UserDefinedPatterns.main(new String[0]);
 	}
 }
