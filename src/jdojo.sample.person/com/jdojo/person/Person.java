@@ -1,6 +1,6 @@
 /**
- * 
- * Command : 
+ *
+ * Command :
  * 		Compile: javac -p mod -d mod/jdojo.sample.person src/jdojo.sample.person/module-info.java src/jdojo.sample.person/com/jdojo/person/Person.java
  * */
 package com.jdojo.person;
@@ -14,15 +14,15 @@ import java.io.Serializable;
 * in the module path.
 * As the 2 modules are part of the same project no extra-step are needed
 * but if 2 modules are part of different project, you need to include those libraries
-* in the project libraries of your IDE (if you use an IDE or in the module path) 
+* in the project libraries of your IDE (if you use an IDE or in the module path)
 *
 *
 */
-public class Person implements Serializable{
+public class Person implements Serializable, Comparable{
 	private long personId;
 	private String firstName;
 	private String lastName;
-	private Address address = new Address();
+	private Address address = Address.getInstance();
 
 	private Person(){
 		this.personId = 00;
@@ -31,14 +31,18 @@ public class Person implements Serializable{
 
 	}
 
+	public static Person getInstance(){
+		return new Person();
+	}
+
 	public Person(
 		long 	personId,
-		String 	firstName, 
-		String	lastName		
+		String 	firstName,
+		String	lastName
 	){
 		this.personId = personId;
 		this.firstName = firstName;
-		this.lastName = lastName;		
+		this.lastName = lastName;
 	}
 
 	public void setPersonId(long personId){
@@ -49,7 +53,7 @@ public class Person implements Serializable{
 		return this.personId;
 	}
 
-	public void setFistname(String firstName){
+	public void setFirstName(String firstName){
 		this.firstName = firstName;
 	}
 
@@ -75,12 +79,42 @@ public class Person implements Serializable{
 
 	@Override
 	public String toString(){
-		return "[PersonId: " + personId 
+		return "[PersonId: " + personId
 			+ ", firstName: " + firstName
 			+ ", lastName: " + lastName
-			+ ", address: " + address;
+			+ ", address: " + address + "]";
 	}
 
-	
-	
+	/*
+	* Comparable interface allow non-primitive object to be compared. Arrays method for comparison will call this method to compare Person instance.
+	*/
+	@Override
+	public int compareTo(Object compareTo){
+		try{
+			Person compareToPerson = (Person) compareTo;
+
+			// Compare the firstname
+			int compareFirstName = this.firstName.compareTo(compareToPerson.getFirstName());
+			if( compareFirstName > 0 ){
+				return 1;
+			}else if(compareFirstName < 0){
+				return -1;
+			}
+
+			// Compare the firstname
+			int compareLastName = this.lastName.compareTo(compareToPerson.getLastName());
+			if( compareLastName > 0 ){
+				return 1;
+			}else if(compareLastName < 0){
+				return -1;
+			}
+
+			return 0;
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+
+		return 0;
+	}
+
 }

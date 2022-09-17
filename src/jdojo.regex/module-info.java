@@ -10,9 +10,9 @@
 *	Compile:
 * 		javac -p mod -d mod/jdojo.regex src/jdojo.regex/module-info.java src/jdojo.regex/com/jdojo/regex/*  -Xdiags:verbose -Xlint:unchecked 
 *	Package:
-*
+*		jar -cvf lib/com.jdojo.regex.jar -C mod/jdojo.regex .
 *	Run:
-*
+*		java -p lib -m jdojo.regex/com.jdojo.regex.<class-name>
 */
 module jdojo.regex{
 	exports com.jdojo.regex;
