@@ -8,18 +8,19 @@ module jdojo.tools.javap{
 	/*
 	* Disassemble .class file
 	* Allow to read info about compiled class file.
-	* Command : 
+	* Command :
 	*	Using class path with dependencies:
 	*		javap --module-path lib --module jdojo.intro com.jdojo.intro.Welcome
-	*	Using JAR URL scheme : 
-	*		- On Windows: 
+    *       javap -c ./mod/jdojo.inheritance/com/jdojo/inheritance/MethodOverridingAndGenericMethodSignatures.class
+	*	Using JAR URL scheme :
+	*		- On Windows:
 	*			javap jar:file:libcom.jdojo.intro.jar!/module-info.class
 	*		- Unix : ?
-	*		 
+	*
 	*/
 	/*
 	* Disassemble system module
-	* System module like java.base or java.sql 
+	* System module like java.base or java.sql
 	* can be disassemble to read .class file info
 	* 	Command:
 	*		- Accessing module declaration
